@@ -60,7 +60,7 @@ class Creature
       case $attackPt >= 100:
         History::set($attackPt . 'Pのダメージ！効果は抜群だ！！');
     }
-    
+
   }
 }
 // プレイヤークラス
@@ -350,16 +350,20 @@ if (!empty($_POST)) {
       // 逃げる
     }elseif($escapeFlg){
       History::set($_SESSION['player']->getName().'が逃げた');
-      // 三分の一の確率で失敗
-      if(!mt_rand(0,2)){
+      // 二分の一の確率で失敗
+      if(!mt_rand(0,1)){
         History::set('しかし、'.$_SESSION['monster']->getName().'に回り込まれた...');
         History::set($_SESSION['monster']->getName().'の攻撃！');
         $_SESSION['monster']->attack($_SESSION['player']);
+        // HPが０以下になればゲームオーバー
+        if ($_SESSION['player']->getHp() <= 0) {
+        gameOver();
         // 逃走成功
       }else{
         History::set($_SESSION['player']->getName().'は無事逃げ切れた！');
         createMonster();
       }
+     }
     }
   }
   $_POST = array();
