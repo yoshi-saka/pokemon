@@ -11,17 +11,18 @@ body{
   width: 100vw;
   height: auto;
   min-height: 100vh;
+  padding: 0;
 }
 @media screen and (max-width: 480px){
-  
+
 }
 form{
   height: 0;
 }
 .start{
   position: relative;
-  left: 550px;
-  top: 300px;
+  left: 650px;
+  top: 350px;
   width: 350px;
   height: 80px;
   border-radius: 5px;
@@ -84,6 +85,8 @@ form{
   border-radius: 5px;
   padding: 10px;
   background-color: #fff;
+  max-height: 300px;
+  overflow: scroll;
 }
 @media screen and (max-width: 480px){
 }
